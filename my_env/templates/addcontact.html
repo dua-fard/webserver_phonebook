@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Contact</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+        function colorbg()
+            {
+                var x = document.getElementById("selectid");
+                var bgcolor=x.options[x.selectedIndex].value;
+                document.body.style.backgroundColor=bgcolor;
+            }
+
+</script>
+
+    <style>
+
+      .white
+        {
+            background:white;
+        }
+
+        .peachpuff
+        {
+            background:peachpuff;
+        }
+
+        .powderblue
+        {
+            background:powderblue;
+        }
+        .lightskyblue
+        {
+            background:lightskyblue;
+        }
+        .palegreen
+        {
+            background:palegreen;
+        }
+        .mediumaquamarine
+        {
+            background:mediumaquamarine;
+        }
+        .thistle
+        {
+            background:thistle;
+        }
+
+    </style>
+
+  </head>
+
+
+  <body >
+
+    <select id="selectid" name="sel_name"  onchange="colorbg();" >
+
+       <option  value=" " selected hidden > --Select Color--</option>
+       <option class="white" name="colors">White</option>
+       <option  class="thistle"  name="colors" >THISTLE</option>
+       <option  class="peachpuff" name="colors" >PEACHPUFF</option>
+       <option  class="powderblue"  name="colors" >POWDERBLUE</option>
+       <option  class="lightskyblue" name="colors" >LIGHTSKYBLUE</option>
+       <option  class="palegreen"  name="colors" >PALEGREEN</option>
+       <option  class="mediumaquamarine"  name="colors" >MEDIUMAQUAMARINE</option>
+    </select>
+
+
+<form  action="http://localhost:5000/addcontact" method="POST"  class=" w-50 m-auto" enctype="multipart/form-data">
+
+
+                      {% with messages = get_flashed_messages() %}
+                         {% if messages %}
+                            {% for message in messages %}
+                               <div class="alert alert-warning alert-dismissible fade show" role="alert">
+	                                  {{ message }}
+                               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+	                           </div>
+                            {% endfor %}
+                         {% endif %}
+                      {% endwith %}
+
+
+
+<div style="text-align: center;">
+     <img  src="https://img.freepik.com/free-vector/hand-drawn-different-profile-icons-pack_52683-71390.jpg?t=st=1657567708~exp=1657568308~hmac=2f1ae18be51cfa0af1c5ec59f06c71b9bf9b21720936383cd90a089102f58f21&w=740"  width="300" height="300" alt="">
+     <p  style="font-family:cursive;background-color:ghostwhite" >  Lets Add A New Contact  ❤️  </p>
+    <div class="form-floating">
+
+      <input type="text"  name="name"  class="form-control" id="floatingInput" placeholder="First name"   >
+      <label> First Name</label>
+
+    </div>
+    <div class="form-floating">
+      <input type="text" name="last" class="form-control" id="floatingInput" placeholder="Last name"  >
+      <label>Last Name</label>
+    </div>
+    <div class="form-floating">
+
+      <input type="text"  name="phone_1"  class="form-control" id="floatingInput" placeholder="09XXXXXXXXX"   >
+      <label>Phone1</label>
+
+    </div>
+    <div class="form-floating">
+
+      <input type="text"  name="phone_2"  class="form-control" id="floatingInput" placeholder="09XXXXXXXXX"   >
+      <label>Phone2</label>
+
+    </div>
+    <div class="form-floating">
+
+      <input type="text"  name="phone_3"  class="form-control" id="floatingInput" placeholder="09XXXXXXXXX"   >
+      <label>Phone3</label>
+     </div>
+     <div>
+    <select  name="select1">
+
+       <option  value=" " selected hidden > --Select A City--</option>
+        {% for city in data %}
+
+
+               <option value="{{ city.id }}" >{{ city.name }}</option>
+
+        {% endfor %}
+
+    </select>
+    </div>
+     <dl>
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+
+   <dive>
+    <button class="w-10 btn btn-lg btn-primary" type="submit" name="submit" value="Submit">Save</button>
+ </dive>
+</div>
+</form>
+</div>
+
+  </body>
+</html>
+

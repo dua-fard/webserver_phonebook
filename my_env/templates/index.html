@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log In</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+        function colorbg()
+            {
+                var x = document.getElementById("selectid");
+                var bgcolor=x.options[x.selectedIndex].value;
+                document.body.style.backgroundColor=bgcolor;
+            }
+
+</script>
+
+    <style>
+
+      .white
+        {
+            background:white;
+        }
+
+        .peachpuff
+        {
+            background:peachpuff;
+        }
+
+        .powderblue
+        {
+            background:powderblue;
+        }
+        .lightskyblue
+        {
+            background:lightskyblue;
+        }
+        .palegreen
+        {
+            background:palegreen;
+        }
+        .mediumaquamarine
+        {
+            background:mediumaquamarine;
+        }
+        .thistle
+        {
+            background:thistle;
+        }
+
+    </style>
+
+  </head>
+
+
+  <body >
+
+    <select id="selectid" name="sel_name"  onchange="colorbg();" >
+
+       <option  value=" " selected hidden > --Select Color--</option>
+       <option class="white" name="colors">White</option>
+       <option  class="thistle"  name="colors" >THISTLE</option>
+       <option  class="peachpuff" name="colors" >PEACHPUFF</option>
+       <option  class="powderblue"  name="colors" >POWDERBLUE</option>
+       <option  class="lightskyblue" name="colors" >LIGHTSKYBLUE</option>
+       <option  class="palegreen"  name="colors" >PALEGREEN</option>
+       <option  class="mediumaquamarine"  name="colors" >MEDIUMAQUAMARINE</option>
+    </select>
+
+
+<form  action="http://localhost:5000/index" method="POST"  class=" w-50 m-auto" >
+
+
+                      {% with messages = get_flashed_messages() %}
+                         {% if messages %}
+                            {% for message in messages %}
+                               <div class="alert alert-warning alert-dismissible fade show" role="alert">
+	                                  {{ message }}
+                               <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+
+	                           </div>
+                            {% endfor %}
+                         {% endif %}
+                      {% endwith %}
+
+
+
+<div style="text-align: center;">
+
+
+    <p  style="font-family:cursive;background-color:ghostwhite" >  Welcome to YourPhoneBook ❤️ Log In To Your Account   ❤️  </p>
+
+    <img  src="https://i.ibb.co/k5zh82p/phonebookadmin.jpg"  width="300" height="204" alt="">
+
+
+    <div class="form-floating">
+
+      <input type="email"  name="email"  class="form-control" id="floatingInput" placeholder="name@example.com"   >
+      <label for="floatingInput">Email address</label>
+
+    </div>
+    <div class="form-floating">
+      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password"  >
+      <label for="floatingPassword">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+
+    <button class="w-10 btn btn-lg btn-primary" type="submit" name="submit" value="Submit">Log In</button>
+
+</div>
+        <p>
+         Don't Have An Account ? <a href="http://localhost:5000/signup">Sign Up</a> .
+       </p>
+</form>
+  </body>
+</html>
+
